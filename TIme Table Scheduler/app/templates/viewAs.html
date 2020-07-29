@@ -1,0 +1,143 @@
+{% extends "header.html" %}
+
+{% block content %}
+
+
+
+	<div class="container">
+	<form action="" method="POST">
+
+	{% csrf_token %}
+
+		<div class="col-xs-4">
+		<label for="accepted_tt">Time Tables Avaialable</label>
+
+        <select class="form-control" id="accepted_tt" name="tt_id">
+		{% for saved_tt in list_of_ids %}
+		  <option>{{ saved_tt }}</option>
+		 {% endfor %}
+		</select>
+		<br>
+		<label for="teacher0">View As Teachers</label>
+
+        <select class="form-control" id="teacher0" name="viewas_teacher">
+		{% for saved_teachers in teachers_option0 %}
+		  <option>{{ saved_teachers }}</option>
+		 {% endfor %}
+		</select>
+		<br>
+        <input type="submit" value="Submit">
+        </div></form>
+		<form action="" method="POST">
+
+		{% csrf_token %}
+        <div class="col-xs-4">
+		<label for="accepted_tt">Time Tables Avaialable</label>
+
+        <select class="form-control" id="accepted_tt" name="tt_id">
+		{% for saved_tt in list_of_ids %}
+		  <option>{{ saved_tt }}</option>
+		 {% endfor %}
+		</select>
+		<br>
+
+
+		<label for="location0">View As Classrooms</label>
+
+        <select class="form-control" id="location0" name="viewas_location">
+		{% for saved_teachers in teachers_options %}
+		
+		  <option>{{ saved_teachers }}</option>
+		 {% endfor %}
+		</select>
+		<br>
+        <input type="submit" value="Submit">
+        </div>
+
+		</div>
+
+	<div class="container">
+	<br><br>
+	<br><br>
+
+	{% if accepted_teacher %}
+		<center><strong><h3>Teacher's Time Table for : {{ accepted_teacher }}</h3></center></strong>
+		<table class="table table-striped">
+			  <thead>
+				    <tr>
+				      <th><center>Days</th>
+				      <th><center>08:00 - 09:00</center></th>
+				      <th><center>09:00 - 10:00</center></th>
+				      <th></th>
+				      <th><center>10:00 - 11:00</center></th>
+				      <th><center>11:00 - 12:00</center></th>
+				      <th><center>12:00 - 12:30</center></th>
+				      <th><center>12:30 - 01:30</center></th>
+				      <th><center>01:30 - 02:30</center></th>
+				    </tr>
+				  </thead>
+
+
+			<tbody>
+
+		{% for table0 in teachers_table %}
+			{% for row in table0 %}
+			<tr>
+				<th scope="row"><center>{% cycle 'Monday' 'Tuesday' 'Wednesday' 'Thursday' 'Friday' 'Saturday' %}</center></th>
+
+			{% for col in row %}
+			<td><center>
+				{{ col.tt_subject }} - {{ col.tt_year }} <br> {{ col.tt_location }}
+			</center></td>
+			{% endfor %}
+			</tr>
+		{% endfor %}
+		</tbody>
+		</table>
+		{% endfor %}
+
+
+	{% endif %}
+
+	{% if accepted_location %}
+	<center><strong><h3>Classroom Time Table for : {{ accepted_location }}</h3></strong></center>
+		<table class="table table-striped">
+			  <thead>
+				    <tr>
+				      <th><center>Days</th>
+				      <th><center>08:00 - 09:00</center></th>
+				      <th><center>09:00 - 10:00</center></th>
+				      <th></th>
+				      <th><center>10:00 - 11:00</center></th>
+				      <th><center>11:00 - 12:00</center></th>
+				      <th><center>12:00 - 12:30</center></th>
+				      <th><center>12:30 - 01:30</center></th>
+				      <th><center>01:30 - 02:30</center></th>
+				    </tr>
+				  </thead>
+
+
+			<tbody>
+
+		{% for table0 in teachers_table %}
+			{% for row in table0 %}
+			<tr>
+				<th scope="row"><center>{% cycle 'Monday' 'Tuesday' 'Wednesday' 'Thursday' 'Friday' 'Saturday' %}</center></th>
+
+			{% for col in row %}
+			<td><center>
+				{{ col.tt_teacher }} - {{ col.tt_subject }} <br> {{ col.tt_year }}
+			</center></td>
+			{% endfor %}
+			</tr>
+		{% endfor %}
+		</tbody>
+		</table>
+		{% endfor %}
+
+
+	{% endif %}
+
+<br></br><br></br>
+</div>
+{% endblock %}

@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+body {
+    margin: 0;
+    padding: 0;
+    background: url('bg.jpg');
+    background-size: cover;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    font-family: 'Poppins', sans-serif;
+}
+
+.loginbox {
+    width: 480px;
+    height: 420px;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    bottom: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 50px;
+}
+
+.user {
+    height: 75px;
+    border-radius: 50%;
+    position: absolute;
+    top: -45px;
+    text-align: center;
+    margin: 0 auto;
+    margin-left: 30%;
+}
+
+h1 {
+    font-size: 45px;
+    color: #fff;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-align: center;
+    padding: 1em 0 0.4em 0;
+}
+
+.loginbox p {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    text-transform: capitalize;
+    color: yellow;
+}
+
+.submitbtnn {
+    cursor: pointer;
+}
+
+.loginbox input {
+    width: 100%;
+    margin-bottom: 20px;
+    padding-left: 12px;
+}
+
+.loginbox input[type="text"],
+input[type="password"] {
+    border: none;
+    border-bottom: transparent;
+    outline: none;
+    height: 40px;
+    color: #000;
+    font-size: 16px;
+    box-shadow: 1px 1px 1px 1px #AAA;
+}
+
+.loginbox input[type="submit"] {
+    border: none;
+    font-weight: bold;
+    outline: none;
+    height: 40px;
+    background: #fb2525;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.submitbtnn:hover {
+    background: green !important;
+}
+
+.login input[type="submit"]:hover {
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+}
+
+.loginbox a {
+    text-decoration: none;
+    color: yellow;
+    font-size: 15px;
+}
+
+.loginbox a:hover {
+    color: #ffc107;
+}
+
+.ll {
+    float: left;
+}
+
+.rr {
+    float: right;
+}

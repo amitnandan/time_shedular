@@ -1,0 +1,60 @@
+{% extends "header.html" %}
+
+{% block content %}
+ <div class="container-fluid">
+	<form action="/viewas/" method="POST">
+	{% csrf_token %}
+	<center><input type="submit" name="viewAs" value="View As" class="btn btn-default"></center>
+		</form>
+		
+			{% for curr_tt in time_table %}
+			<br>
+		  	<center><h2>{% cycle 'Second Year : A' 'Second Year : B' 'Third Year : A' 'Third Year : B' %}</center></h2>
+			</br>
+			<table class="table table-striped">
+			  <thead>
+				    <tr>
+				      <th><center>Days</th>
+				      <th><center>08:00 - 09:00</center></th>
+				      <th><center>09:00 - 10:00</center></th>
+				      <th></th>
+				      <th><center>10:00 - 11:00</center></th>
+				      <th><center>11:00 - 12:00</center></th>
+				      <th><center>12:00 - 12:30</center></th>
+				      <th><center>12:30 - 01:30</center></th>
+				      <th><center>01:30 - 02:30</center></th>
+				    </tr>
+				  </thead>
+
+
+			<tbody>
+
+			{% for row in curr_tt %}
+				
+				<tr>
+				<th scope="row"><center>{% cycle 'Monday' 'Tuesday' 'Wednesday' 'Thursday' 'Friday' 'Saturday' %}</center></th>
+
+				{% for col in row %}
+					<td><center>
+					{% if col == -1 %}
+						 OFF
+					{% elif col == -923 %}
+						{{ break}}
+					{% elif col == 0 %}
+						BREAK
+					{% else %}
+						{{col.teacher}} - {{col.subject}} <br> {{col.location}} - {{ col.is_lab }} </br>
+					{% endif %}
+					</center></td>
+				{% endfor %}
+				</tr>
+				
+				
+		{% endfor %}
+			</tbody>
+			</table>
+		{% endfor %}
+	
+
+</center></th></tr></thead></table></center></div>		
+{% endblock %}

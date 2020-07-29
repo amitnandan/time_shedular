@@ -1,0 +1,85 @@
+{% extends 'header.html' %}
+ownlo
+{% block content %}
+
+	<div class="container">
+	<form action="" method="POST">
+
+	{% csrf_token %}
+
+		<div class="col-xs-4">
+		<label for="accepted_tt">Time Tables Avaialable</label>
+
+        <select class="form-control" id="accepted_tt" name="tt">
+		{% for saved_tt in list_of_ids %}
+		  <option>{{ saved_tt }}</option>
+		 {% endfor %}
+		</select>
+		<br>
+        <input type="submit" value="Submit" class = 'btn btn-default'>
+        </div></form><a href="/viewas/"><br><button type = "button" class = "btn btn-info">Teacher's Timetable</button></a>
+
+        {% if tt_id %}
+        <br><br><br><br><br>
+
+<br><br><center><b><form action="/download/" method="POST">
+        			{% csrf_token %}
+        			Time Table ID <input type="submit" name="id" value="{{tt_id}}" class = 'btn btn-default'>
+        </form> {% endif %}
+</b></center>
+
+			{% for curr_tt in time_table %}
+			<br>
+		  	<center><h2>{% cycle 'Second Year : A' 'Second Year : B' 'Third Year : A' 'Third Year : B' %}</center></h2>
+			</br>
+			<table class="table table-striped">
+			  <thead>
+				    <tr>
+				      <th><center>Days</th>
+				      <th><center>08:00 - 09:00</center></th>
+				      <th><center>09:00 - 10:00</center></th>
+				      <th></th>
+				      <th><center>10:00 - 11:00</center></th>
+				      <th><center>11:00 - 12:00</center></th>
+				      <th><center>12:00 - 12:30</center></th>
+				      <th><center>12:30 - 01:30</center></th>
+				      <th><center>01:30 - 02:30</center></th>
+				    </tr>
+				  </thead>
+
+
+			<tbody>
+
+			{% for row in curr_tt %}
+				
+				<tr>
+				<th scope="row"><center>{% cycle 'Monday' 'Tuesday' 'Wednesday' 'Thursday' 'Friday' 'Saturday' %}</center></th>
+
+				{% for col in row %}
+					<td><center>
+					{% if col.tt_teacher == "-1" %}
+						 OFF
+					{% elif col.tt_teacher == "-923" %}
+						{{ break}}
+					{% elif col.tt_teacher == "0" %}
+						BREAK
+					{% else %}
+						{{col.tt_teacher}} - {{col.tt_subject}} <br> {{col.tt_location}} - {{ col.tt_is_lab }} </br>
+					{% endif %}
+					</center></td>
+				{% endfor %}
+				</tr>
+				
+				
+		{% endfor %}
+			</tbody>
+			</table>
+
+		{% endfor %}
+
+	
+
+
+
+
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends "header.html" %}
+
+{% block content %}
+ <div class="container-fluid">
+
+<div class="alert alert-danger" role="alert"><b> Got these Questions?</b></div>
+<ul>
+  <li>So how does the project work?</li>
+  <li>How do we start?</li>
+  <li>What kind of inputs are required & where should we upload them?</li>
+  <li>Where can i see my timetable?</li>
+</ul>
+
+<div class="alert alert-success" role="alert"><b>Good! We've got a Manual for you.</b></div>
+
+
+<h1><b>So where do we start? Let's see.</b></h1>
+
+<h4><p style="color:#f0ad4e">
+<strong>
+For Creating a time table, we need basic information initially, such as</p>
+<ul>
+	<li><font color=#5bc0de>TEACHER</font>  - Teacher's Name.</li>
+	<li><font color=#5bc0de>SUBJECT</font>  - Subject's Name.</li>
+	<li><font color=#5bc0de>PRACTICAL/LECTURE</font>  - Is it a lecture or a practical.</li>
+	<li><font color=#5bc0de>WEEKLY COUNT</font>  - Weekly Count or Load given to that subject.</li>
+	<li><font color=#5bc0de>DAILY COUNT</font>  - Daily Count given to that subject.</li>
+
+</ul>
+</strong>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Step 1: Inserting Data</h3>
+  </div>
+  <div class="panel-body">
+
+<h4><p style="color:#f0ad4e">
+<strong>
+We've provided 2 ways for accepting the required information.
+<ul>
+	1. <a href="/accept_data"> Manually Insert all the data. <br><br>
+	<img src="/static/upload_manual.png" class="img-responsive" alt="Responsive image"></a>
+	<center>OR</center><br>
+	2. <a href="/fileupload">Upload all of the data at once using Excel File.<br><br><center>
+	<img src="/static/upload_excel.png" class="img-responsive" alt="Responsive image"></a></center>
+</ul>
+</strong></p></h4>
+
+	<h4><p style="color:#f0ad4e"><strong>
+	Rules! for creating Excel file.
+	Starting from Column 0 Row 0,
+	</strong></p></h4>
+<ul class="list-group">
+  <li class="list-group-item list-group-item-success">0th Column should have Teachers Name.</li>
+  <li class="list-group-item list-group-item-info">1st Column should contain respective Teachers Subject.</li>
+  <li class="list-group-item list-group-item-warning">2nd Column should contain respective Subjects Weekly Count.</li>
+  <li class="list-group-item list-group-item-danger">3rd Column should have the required Daily Count of the Subject.</li>
+  <li class="list-group-item list-group-item-info">4th Column Must have the location of the Lab/Class-room of the Given Subject.</li>
+</ul>
+
+	<h4><p style="color:#f0ad4e"><strong>
+	For Example:<center><img src="/static/excel_example.png" class="img-responsive" alt="Responsive image"></a></center>
+	</strong></p></h4>
+  </div>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading">Step 2: Verifying Data</div>
+  <div class="panel-body">
+    
+
+  	<h4><p style="color:#3F51B5">
+<strong><a href="http://localhost:8000/printf">
+Before Creating a time table, make sure you've uploaded your data correctly.</strong>
+</p></h4>
+<img src="/static/verify_1.png" class="img-responsive" alt="Responsive image"></a></center></a>
+  	<h4><p style="color:#607D8B">
+<strong>
+If something is incorrect or you would simply like to change a teacher's name or anything else, just click on Login at the top-most button on the right & go to Lectures.</strong>
+</p></h4>
+
+
+
+
+  </div>
+</div>
+
+<div class="panel panel-danger">
+  <div class="panel-heading">Step 3: Time Table</div>
+  <div class="panel-body">
+    
+
+  	<h4><p style="color:#FFC107">
+<strong><a href="/demo">
+Now that all data has been uploaded and verified, all you have to do is click on the Generate Time Table Button.  And the rest will be taken care of. :) </strong>
+</p></h4>
+<img src="/static/timetable_1.png" class="img-responsive" alt="Responsive image"></a></a>
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+ 
+</div>
+{% endblock %}

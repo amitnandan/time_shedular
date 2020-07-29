@@ -1,0 +1,19 @@
+{% extends "header.html" %}
+
+{% block content %}
+
+	<center><a href="javascript:history.go(-1)" class="btn btn-default">Back</a> <h3> Data Required : </h3><hr>
+
+	<form action="" method="post" class="form-inline">
+    <form >
+
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input type="submit" value="Submit" class= "btn btn-primary"/>
+	   <a href="/printf">
+   	<input type="button" value="Check Data" class= "btn btn-warning"/> </a>
+   	<a href="/demo">
+    <input type="button" value="Create Time Table" class= "btn btn-info"/></a>
+    </center>
+{% endblock %}	

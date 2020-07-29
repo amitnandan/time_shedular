@@ -1,0 +1,133 @@
+{% extends "header.html" %}
+
+{% block content %}
+
+<div class="container">
+<a href="javascript:history.go(-1)" class="btn btn-default">Back</a>
+
+<h3> Accepted Data : </h3>
+<p align="right"><a href="/demo"><input type="button" value="Create Time Table" class="btn btn-primary"/></a>
+<a href="/accept_data"><input type="button" value="Input More Data" class="btn btn-info" /></a></p>
+<table class="table table-inverse">
+    <thead>
+      <tr class=info>
+        <th><center>Year</center></th>
+        <th><center>Teacher</center></th>
+        <th><center>Subject</center></th>
+        <th><center>Lecture/Practical</center></th>
+        <th><center>Location</center></th>
+        <th><center>Weekly Count</center></th>
+      </tr>
+    </thead>
+    {% for obj in objects %}
+
+    <tbody>
+      <tr>
+        {% if obj.year == "SY_A" %}
+            <td class=active><center><b>Second</b> Year <b>A</b>{% endif %}
+            {% if obj.year == "SY_B" %}
+            <td class=success><center><b>Second</b> Year <b>B</b>{% endif %}
+            {% if obj.year == "TY_A" %}
+            <td class=warning><center><b>Third</b> Year <b>A</b>{% endif %}
+            {% if obj.year == "TY_B" %}
+            <td class=danger><center><b>Third</b> Year <b>B</b>
+            {% endif %}
+           </center></td>
+
+        {% if obj.year == "SY_A" %}
+            <td class=active><center>{{ obj.teacher }}</center></td>
+        {% endif %}
+        {% if obj.year == "SY_B" %}
+            <td class=success><center>{{ obj.teacher }}</center></td>
+        {% endif %}
+        {% if obj.year == "TY_A" %}
+            <td class=warning><center>{{ obj.teacher }}</center></td>
+        {% endif %}
+        {% if obj.year == "TY_B" %}
+            <td class=danger><center>{{ obj.teacher }}</center></td>
+        {% endif %}
+
+
+        {% if obj.year == "SY_A" %}
+            <td class=active><center>{{ obj.subject }}</center></td>
+        {% endif %}
+        {% if obj.year == "SY_B" %}
+            <td class=success><center>{{ obj.subject }}</center></td>
+        {% endif %}
+        {% if obj.year == "TY_A" %}
+            <td class=warning><center>{{ obj.subject }}</center></td>
+        {% endif %}
+        {% if obj.year == "TY_B" %}
+            <td class=danger><center>{{ obj.subject }}</center></td>
+        {% endif %}
+
+
+        {% if obj.is_lab == 0 %}
+            {% if obj.year == "SY_A" %}
+            <td class=active><center>LECTURE</center></td>
+            {% endif %}
+            {% if obj.year == "SY_B" %}
+            <td class=success><center>LECTURE</center></td>
+            {% endif %}
+            {% if obj.year == "TY_A" %}
+            <td class=warning><center>LECTURE</center></td>
+            {% endif %}
+            {% if obj.year == "TY_B" %}
+            <td class=danger><center>LECTURE</center></td>
+            {% endif %}
+        {% else %}
+            {% if obj.year == "SY_A" %}
+            <td class=active><center>PRACTICAL</center></td>
+            {% endif %}
+            {% if obj.year == "SY_B" %}
+            <td class=success><center>PRACTICAL</center></td>
+            {% endif %}
+            {% if obj.year == "TY_A" %}
+            <td class=warning><center>PRACTICAL</center></td>
+            {% endif %}
+            {% if obj.year == "TY_B" %}
+            <td class=danger><center>PRACTICAL</center></td>
+            {% endif %}
+        {% endif %}
+
+
+
+
+
+        {% if obj.year == "SY_A" %}
+            <td class=active><center>{{ obj.location }}</center></td>
+        {% endif %}
+        {% if obj.year == "SY_B" %}
+            <td class=success><center>{{ obj.location }}</center></td>
+        {% endif %}
+        {% if obj.year == "TY_A" %}
+            <td class=warning><center>{{ obj.location }}</center></td>
+        {% endif %}
+        {% if obj.year == "TY_B" %}
+            <td class=danger><center>{{ obj.location }}</center></td>
+        {% endif %}
+
+
+
+
+        {% if obj.year == "SY_A" %}
+            <td class=active><center>{{ obj.weekly_count }}</center></td>
+        {% endif %}
+        {% if obj.year == "SY_B" %}
+            <td class=success><center>{{ obj.weekly_count }}</center></td>
+        {% endif %}
+        {% if obj.year == "TY_A" %}
+            <td class=warning><center>{{ obj.weekly_count }}</center></td>
+        {% endif %}
+        {% if obj.year == "TY_B" %}
+            <td class=danger><center>{{ obj.weekly_count }}</center></td>
+        {% endif %}
+
+      </tr>
+    </tbody>
+    {% endfor %}
+</table>
+
+
+
+{% endblock %}
